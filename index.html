@@ -1,0 +1,444 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latin Table | Latin American & American Cuisine</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#111;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,.92);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.logo{
+    height:60px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:25px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    transition:.3s;
+}
+
+nav ul li a:hover{
+    color:#fcbf49;
+}
+
+.hero{
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.65)),
+    url("1.png");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:120px 20px 50px;
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero-content h1{
+    font-size:4rem;
+    margin-bottom:20px;
+    font-weight:800;
+}
+
+.hero-content p{
+    font-size:1.2rem;
+    line-height:1.9;
+    color:#ddd;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    background:#d62828;
+    color:white;
+    text-decoration:none;
+    padding:15px 40px;
+    border-radius:50px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#f77f00;
+    transform:translateY(-3px);
+}
+
+section{
+    padding:90px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:3rem;
+    color:#fcbf49;
+    margin-bottom:60px;
+}
+
+.about{
+    background:#181818;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-grid img{
+    width:100%;
+    border-radius:20px;
+}
+
+.about-text h2{
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+.about-text p{
+    color:#ddd;
+    line-height:1.9;
+}
+
+.gallery{
+    background:#111;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.gallery-grid img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    border-radius:15px;
+    transition:.3s;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.04);
+}
+
+.order{
+    background:#181818;
+    text-align:center;
+}
+
+.order p{
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+    color:#ddd;
+    margin-bottom:35px;
+}
+
+.features{
+    background:#111;
+}
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.feature-card{
+    background:#181818;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+}
+
+.feature-card h3{
+    color:#fcbf49;
+    margin-bottom:15px;
+}
+
+.feature-card p{
+    color:#ddd;
+    line-height:1.7;
+}
+
+.contact{
+    background:#181818;
+}
+
+.contact-container{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+    background:#111;
+    padding:50px;
+    border-radius:20px;
+}
+
+.contact-container h3{
+    margin-bottom:25px;
+    font-size:2rem;
+}
+
+.contact-item{
+    margin:20px 0;
+    font-size:1.1rem;
+}
+
+.contact-item a{
+    color:#fcbf49;
+    text-decoration:none;
+}
+
+.map{
+    margin-top:40px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+footer{
+    background:#000;
+    text-align:center;
+    padding:30px;
+    color:#888;
+}
+
+@media(max-width:768px){
+
+nav{
+    flex-direction:column;
+    gap:15px;
+}
+
+nav ul{
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.hero-content h1{
+    font-size:2.5rem;
+}
+
+.hero-content p{
+    font-size:1rem;
+}
+
+.section-title{
+    font-size:2rem;
+}
+
+.about-grid{
+    grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+<body>
+
+<nav>
+
+<img src="./images/latintable.png" class="logo" alt="Latin Table">
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#order">Order</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<h1>Latin Table</h1>
+
+<p>
+Experience the perfect blend of Latin American and American flavors.
+Our innovative culinary creations come with a contemporary flair that
+will tantalize your taste buds and create a memorable dining experience.
+</p>
+
+<a href="#order" class="btn">Order Now</a>
+
+</div>
+
+</section>
+
+<section class="about" id="about">
+
+<h1 class="section-title">Our Story</h1>
+
+<div class="about-grid">
+
+<img src="./images/latintable.png" alt="Latin Table Cuisine">
+
+<div class="about-text">
+
+<h2>Where Tradition Meets Innovation</h2>
+
+<p>
+At Latin Table LLC, we bring together the bold, vibrant flavors of Latin
+America with the comforting favorites of American cuisine. Every dish is
+crafted with fresh ingredients, authentic inspiration, and a modern touch
+that makes each meal unforgettable.
+</p>
+
+<br>
+
+<p>
+Whether you're joining us for lunch, dinner, or takeout, our mission is
+to provide exceptional food and outstanding hospitality that keeps you
+coming back for more.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="gallery" id="gallery">
+
+<h1 class="section-title">Featured Dishes</h1>
+
+<div class="gallery-grid">
+
+<img src="1.png" alt="">
+<img src="2.png" alt="">
+<img src="3.png" alt="">
+<img src="4.png" alt="">
+
+</div>
+
+</section>
+
+<section class="features">
+
+<h1 class="section-title">Why Choose Latin Table</h1>
+
+<div class="feature-grid">
+
+<div class="feature-card">
+<h3>Fresh Ingredients</h3>
+<p>Prepared daily using quality ingredients and authentic flavors.</p>
+</div>
+
+<div class="feature-card">
+<h3>Unique Fusion</h3>
+<p>A creative blend of Latin American and American culinary traditions.</p>
+</div>
+
+<div class="feature-card">
+<h3>Friendly Service</h3>
+<p>Our team is committed to delivering a welcoming dining experience.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="order" id="order">
+
+<h1 class="section-title">Order Online</h1>
+
+<p>
+Ready to enjoy Latin Table? Place your order today and experience
+the flavors everyone is talking about.
+</p>
+
+<a href="#" class="btn">Place Your Order</a>
+
+</section>
+
+<section class="contact" id="contact">
+
+<div class="contact-container">
+
+<h3>Get In Touch</h3>
+
+<div class="contact-item">
+📧 Email:
+<a href="mailto:Latintableau@gmail.com">Latintableau@gmail.com</a>
+</div>
+
+<div class="contact-item">
+📞 Phone:
+<a href="tel:3345915315">(334) 591-5315</a>
+</div>
+
+<div class="contact-item">
+📍 Address:<br>
+2450 Martin Luther King Dr<br>
+Auburn, AL 36832-4109
+</div>
+
+<div class="map">
+
+<iframe
+src="https://maps.google.com/maps?q=2450%20Martin%20Luther%20King%20Dr%20Auburn%20AL%2036832&t=&z=15&ie=UTF8&iwloc=&output=embed"
+width="100%"
+height="350"
+style="border:0;"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Latin Table LLC. All Rights Reserved.
+</footer>
+
+</body>
+</html>
+```
