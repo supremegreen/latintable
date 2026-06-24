@@ -1,523 +1,587 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Latin Table | Latin American & American Cuisine</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Latin Table | Latin American & American Cuisine</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
+    <style>
+      :root {
+        --bg-opacity: 0.15;
+        --nav-height: 70px;
+        --accent: #fcbf49;
+        --cta: #d62828;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        background: #111;
+        color: #fff;
+        overflow-x: hidden;
+        position: relative;
+      }
 
-:root{
-    /* CHANGE THIS NUMBER TO ADJUST BACKGROUND FADE */
-    --bg-opacity: 0.15;
-}
+      /* Background wrapper */
+      .home-about-gallery-wrapper {
+        position: relative;
+        overflow: hidden;
+      }
+      .home-about-gallery-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('./images/bgimage.png') center center / cover no-repeat;
+        background-attachment: fixed;
+        opacity: var(--bg-opacity);
+        z-index: 0;
+        pointer-events: none;
+      }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-    scroll-behavior:smooth;
-}
+      /* Sections layering */
+      .hero,
+      .about,
+      .gallery {
+        position: relative;
+        z-index: 1;
+        background: transparent;
+      }
 
-body{
-    background:#111;
-    color:#fff;
-    overflow-x:hidden;
-    position:relative;
-}
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 10px 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        height: var(--nav-height);
+      }
 
-/* Background image only behind Home, About, Gallery */
+      /* left area (empty intentionally so logo not inside nav) */
+      nav .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 40px;
+      }
 
-.home-about-gallery-wrapper{
-    position:relative;
-    overflow:hidden;
-}
+      /* hamburger container at far right */
+      .hamburger {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .hamburger .bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: #fff;
+        margin: 3px 0;
+        border-radius: 2px;
+        transition: all 0.25s;
+      }
 
-.home-about-gallery-wrapper::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:url("./images/bgimage.png") center center / cover no-repeat;
-    background-attachment:fixed;
-    opacity:var(--bg-opacity);
-    z-index:0;
-    pointer-events:none;
-}
+      /* dropdown menu (hidden by default) */
+      .nav-dropdown {
+        position: fixed;
+        top: calc(var(--nav-height) + 10px);
+        right: 5%;
+        background: rgba(20, 20, 20, 0.95);
+        backdrop-filter: blur(6px);
+        border-radius: 12px;
+        padding: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        z-index: 1100;
+        min-width: 160px;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .nav-dropdown a {
+        color: #fff;
+        text-decoration: none;
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-weight: 600;
+      }
+      .nav-dropdown a:hover {
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--accent);
+      }
 
-.hero,
-.about,
-.gallery{
-    position:relative;
-    z-index:1;
-    background:transparent;
-}
+      /* HERO */
+      .hero {
+        min-height: 100vh;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 100px 20px 50px; /* extra top padding to avoid nav overlap */
+      }
+      .hero-content {
+        max-width: 900px;
+        margin-top: 20px;
+      }
+      .hero-logo {
+        display: block;
+        width: 950px;
+        max-width: 95%;
+        height: auto;
+        margin: 18px auto 28px auto;
+      }
 
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    background:rgba(0,0,0,.2);
-    backdrop-filter:blur(10px);
-    z-index:1000;
-    padding:15px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid rgba(255,255,255,.1);
-}
+      /* CTA */
+      .btn {
+        display: inline-block;
+        background: var(--cta);
+        color: white;
+        text-decoration: none;
+        padding: 14px 36px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: 0.25s;
+      }
+      .btn:hover {
+        background: #f77f00;
+        transform: translateY(-3px);
+      }
 
-.logo{
-    height:60px;
-}
+      /* Sections */
+      section {
+        padding: 80px 8%;
+      }
+      .section-title {
+        text-align: center;
+        font-size: 3rem;
+        color: var(--accent);
+        margin-bottom: 40px;
+      }
 
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:25px;
-}
+      /* ABOUT */
+      .about {
+        background: rgba(24, 24, 24, 0.85);
+        backdrop-filter: blur(2px);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .about-grid img {
+        width: 100%;
+        border-radius: 16px;
+      }
+      .about-text h2 {
+        margin-bottom: 18px;
+        font-size: 1.9rem;
+      }
+      .about-text p {
+        color: #ddd;
+        line-height: 1.9;
+      }
 
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-weight:500;
-    transition:.3s;
-}
+      /* GALLERY - horizontal scroll to save vertical space */
+      .gallery {
+        background: rgba(17, 17, 17, 0.75);
+        backdrop-filter: blur(2px);
+      }
+      .gallery-grid {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 6px;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+      .gallery-grid img {
+        flex: 0 0 calc(75vw); /* big on mobile, but horizontal */
+        max-width: 420px;
+        height: 260px;
+        object-fit: cover;
+        border-radius: 12px;
+        transition: 0.3s;
+        scroll-snap-align: center;
+      }
+      .gallery-grid img:hover {
+        transform: scale(1.03);
+      }
 
-nav ul li a:hover{
-    color:#fcbf49;
-}
+      /* FEATURES / OTHER */
+      .features {
+        background: #111;
+      }
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 24px;
+      }
+      .feature-card {
+        background: #181818;
+        padding: 28px;
+        border-radius: 16px;
+        text-align: center;
+      }
+      .feature-card h3 {
+        color: var(--accent);
+        margin-bottom: 12px;
+      }
+      .feature-card p {
+        color: #ddd;
+        line-height: 1.7;
+      }
 
-.hero{
-    min-height:100vh;
-    background:rgba(0,0,0,.60);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:120px 20px 50px;
-}
+      /* ORDER / CONTACT */
+      .order {
+        background: #181818;
+        text-align: center;
+      }
+      .order p {
+        max-width: 800px;
+        margin: auto;
+        line-height: 1.8;
+        color: #ddd;
+        margin-bottom: 20px;
+      }
+      .contact {
+        background: #181818;
+      }
+      .contact-container {
+        max-width: 900px;
+        margin: auto;
+        text-align: center;
+        background: #111;
+        padding: 30px;
+        border-radius: 12px;
+      }
+      .contact-container h3 {
+        margin-bottom: 18px;
+        font-size: 1.6rem;
+      }
 
-.hero-content{
-    max-width:900px;
-}
+      /* MAP */
+      .map {
+        margin-top: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+      }
 
-.hero-logo{
-    display:block;
-    width:750px;
-    max-width:90%;
-    height:auto;
-    margin:0 auto 30px auto;
-}
+      /* FOOTER */
+      footer {
+        background: #000;
+        text-align: center;
+        padding: 20px;
+        color: #888;
+      }
 
-.hero-content h1{
-    font-size:4rem;
-    margin-bottom:20px;
-    font-weight:800;
-}
+      /* Responsive tweaks */
+      @media (min-width: 992px) {
+        .hero-logo {
+          width: 750px;
+          max-width: 70%;
+        }
+        .gallery-grid img {
+          flex: 0 0 360px;
+        }
+        nav {
+          padding: 14px 6%;
+        }
+        .nav-dropdown {
+          right: 6%;
+        }
+      }
 
-.hero-content p{
-    font-size:1.2rem;
-    line-height:1.9;
-    color:#ddd;
-    margin-bottom:35px;
-}
+      @media (max-width: 768px) {
+        nav {
+          padding: 8px 4%;
+          height: var(--nav-height);
+        }
+        /* keep nav compact, hamburger remains visible; hide other nav lists */
+        .hero {
+          padding: calc(var(--nav-height) + 24px) 16px 50px;
+        }
+        .hero-logo {
+          margin-top: 6px;
+          margin-bottom: 18px;
+          width: 78%;
+        }
+        .section-title {
+          font-size: 1.8rem;
+          margin-bottom: 28px;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .gallery-grid img {
+          height: 220px;
+          flex: 0 0 78vw;
+        }
+        .contact-container {
+          padding: 20px;
+        }
+      }
 
-.btn{
-    display:inline-block;
-    background:#d62828;
-    color:white;
-    text-decoration:none;
-    padding:15px 40px;
-    border-radius:50px;
-    font-weight:600;
-    transition:.3s;
-}
+      /* Hide native nav list if present (keeps backward compatibility) */
+      nav ul {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <!-- intentionally left blank so logo is not inside the fixed transparent nav -->
+      </div>
 
-.btn:hover{
-    background:#f77f00;
-    transform:translateY(-3px);
-}
+      <!-- Hamburger on far right -->
+      <div style="display: flex; align-items: center; gap: 12px">
+        <!-- If you want a small text brand in nav (optional), remove/comment out. It's omitted per request. -->
+        <div
+          class="hamburger"
+          id="hamburger"
+          aria-label="Open menu"
+          role="button"
+          tabindex="0"
+        >
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
 
-section{
-    padding:90px 8%;
-}
+      <!-- Dropdown menu (links only in this dropdown) -->
+      <div class="nav-dropdown" id="navDropdown" aria-hidden="true">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#order">Order</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
 
-.section-title{
-    text-align:center;
-    font-size:3rem;
-    color:#fcbf49;
-    margin-bottom:60px;
-}
-
-.about{
-    background:rgba(24,24,24,.85);
-    backdrop-filter:blur(2px);
-}
-
-.about-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
-}
-
-.about-grid img{
-    width:100%;
-    border-radius:20px;
-}
-
-.about-text h2{
-    margin-bottom:20px;
-    font-size:2rem;
-}
-
-.about-text p{
-    color:#ddd;
-    line-height:1.9;
-}
-
-.gallery{
-    background:rgba(17,17,17,.75);
-    backdrop-filter:blur(2px);
-}
-
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-
-.gallery-grid img{
-    width:100%;
-    height:300px;
-    object-fit:cover;
-    border-radius:15px;
-    transition:.3s;
-}
-
-.gallery-grid img:hover{
-    transform:scale(1.04);
-}
-
-.features{
-    background:#111;
-}
-
-.feature-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-}
-
-.feature-card{
-    background:#181818;
-    padding:35px;
-    border-radius:20px;
-    text-align:center;
-}
-
-.feature-card h3{
-    color:#fcbf49;
-    margin-bottom:15px;
-}
-
-.feature-card p{
-    color:#ddd;
-    line-height:1.7;
-}
-
-.order{
-    background:#181818;
-    text-align:center;
-}
-
-.order p{
-    max-width:800px;
-    margin:auto;
-    line-height:1.8;
-    color:#ddd;
-    margin-bottom:35px;
-}
-
-.contact{
-    background:#181818;
-}
-.contact-container{
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-    background:#111;
-    padding:50px;
-    border-radius:20px;
-}
-
-.contact-container h3{
-    margin-bottom:25px;
-    font-size:2rem;
-}
-
-.contact-item{
-    margin:20px 0;
-    font-size:1.1rem;
-}
-
-.contact-item a{
-    color:#fcbf49;
-    text-decoration:none;
-}
-
-.map{
-    margin-top:40px;
-    border-radius:20px;
-    overflow:hidden;
-}
-
-footer{
-    background:#000;
-    text-align:center;
-    padding:30px;
-    color:#888;
-}
-
-@media(max-width:768px){
-
-    nav{
-        flex-direction:column;
-        gap:15px;
-    }
-
-    nav ul{
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-    .hero-content h1{
-        font-size:2.5rem;
-    }
-
-    .hero-content p{
-        font-size:1rem;
-    }
-
-    .section-title{
-        font-size:2rem;
-    }
-
-    .about-grid{
-        grid-template-columns:1fr;
-    }
-}
-
-</style>
-</head>
-<body>
-
-<nav>
-
-    <img src="./images/latintable.png" class="logo" alt="Latin Table">
-
-    <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#order">Order</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-
-</nav>
-
-<!-- Background image starts here -->
-<div class="home-about-gallery-wrapper">
-
-<section class="hero" id="home">
-
-    <div class="hero-content">
-
-        <img
+    <!-- Background image starts here -->
+    <div class="home-about-gallery-wrapper">
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <!-- Homepage logo kept here (moved down by padding so it's not cut off by transparent nav) -->
+          <img
             src="./images/latintable.png"
             alt="Latin Table Cuisine"
             class="hero-logo"
-        >
+          />
 
-        <p>
+          <p
+            style="
+              font-size: 1.05rem;
+              color: #ddd;
+              line-height: 1.9;
+              margin-bottom: 22px;
+            "
+          >
             Experience the perfect blend of Latin American and American flavors.
             Our innovative culinary creations come with a contemporary flair
             that will tantalize your taste buds and create a memorable dining
             experience.
-        </p>
+          </p>
 
-        <a href="#order" class="btn">
+          <a
+            href="https://cash.app/order/$latintablellc/l/CALL_CAESDUwzNFJaWEZLUFkyMjQ/pickup?a=OWG&rwg_token=AE37R_izKUBBbO6YJUT2FOdRkjM_8B2a4TYu_UO5f-0Ajz7Fb2Us_DHD_eQpOyvj15aAmEHNcpGfSMxmHY23EKZw1-esZeF8qA%3D%3D"
+            class="btn"
+            id="heroOrderBtn"
+          >
             Order Now
-        </a>
+          </a>
+        </div>
+      </section>
 
-    </div>
+      <section class="about" id="about">
+        <h1 class="section-title">Our Story</h1>
+        <div class="about-grid">
+          <img src="./images/story.png" alt="Latin Table Cuisine" />
+          <div class="about-text">
+            <h2>Where Tradition Meets Innovation</h2>
+            <p>
+              At Latin Table LLC, we bring together the bold, vibrant flavors of
+              Latin America with the comforting favorites of American cuisine.
+              Every dish is crafted with fresh ingredients, authentic
+              inspiration, and a modern touch that makes each meal
+              unforgettable.
+            </p>
+            <br />
+            <p>
+              Whether you're joining us for lunch, dinner, or takeout, our
+              mission is to provide exceptional food and outstanding hospitality
+              that keeps you coming back for more.
+            </p>
+          </div>
+        </div>
+      </section>
 
-</section>
-
-<section class="about" id="about">
-
-    <h1 class="section-title">
-        Our Story
-    </h1>
-
-    <div class="about-grid">
-
-        <img
-            src="./images/story.png"
-            alt="Latin Table Cuisine"
+      <section class="gallery" id="gallery">
+        <h1 class="section-title">Featured Dishes</h1>
+        <div
+          class="gallery-grid"
+          aria-label="Featured dishes, horizontally scrollable"
         >
-
-        <div class="about-text">
-
-            <h2>
-                Where Tradition Meets Innovation
-            </h2>
-
-            <p>
-                At Latin Table LLC, we bring together the bold,
-                vibrant flavors of Latin America with the comforting
-                favorites of American cuisine. Every dish is crafted
-                with fresh ingredients, authentic inspiration, and a
-                modern touch that makes each meal unforgettable.
-            </p>
-
-            <br>
-
-            <p>
-                Whether you're joining us for lunch, dinner,
-                or takeout, our mission is to provide exceptional
-                food and outstanding hospitality that keeps you
-                coming back for more.
-            </p>
-
+          <img src="./images/picone.png" alt="Dish 1" />
+          <img src="./images/pictwo.png" alt="Dish 2" />
+          <img src="./images/picthree.png" alt="Dish 3" />
+          <img src="./images/picfour.png" alt="Dish 4" />
         </div>
-
+      </section>
     </div>
+    <!-- Background image ends here -->
 
-</section>
-
-<section class="gallery" id="gallery">
-
-    <h1 class="section-title">
-        Featured Dishes
-    </h1>
-
-    <div class="gallery-grid">
-
-        <img src="./images/picone.png" alt="">
-        <img src="./images/pictwo.png" alt="">
-        <img src="./images/picthree.png" alt="">
-        <img src="./images/picfour.png" alt="">
-
-    </div>
-
-</section>
-
-</div>
-<!-- Background image ends here -->
-
-<section class="features">
-
-    <h1 class="section-title">
-        Why Choose Latin Table
-    </h1>
-
-    <div class="feature-grid">
-
+    <section class="features">
+      <h1 class="section-title">Why Choose Latin Table</h1>
+      <div class="feature-grid">
         <div class="feature-card">
-            <h3>Fresh Ingredients</h3>
-            <p>
-                Prepared daily using quality ingredients
-                and authentic flavors.
-            </p>
+          <h3>Fresh Ingredients</h3>
+          <p>Prepared daily using quality ingredients and authentic flavors.</p>
         </div>
-
         <div class="feature-card">
-            <h3>Unique Fusion</h3>
-            <p>
-                A creative blend of Latin American and
-                American culinary traditions.
-            </p>
+          <h3>Unique Fusion</h3>
+          <p>
+            A creative blend of Latin American and American culinary traditions.
+          </p>
         </div>
-
         <div class="feature-card">
-            <h3>Friendly Service</h3>
-            <p>
-                Our team is committed to delivering a
-                welcoming dining experience.
-            </p>
+          <h3>Friendly Service</h3>
+          <p>
+            Our team is committed to delivering a welcoming dining experience.
+          </p>
         </div>
+      </div>
+    </section>
 
-    </div>
+    <section class="order" id="order">
+      <h1 class="section-title">Order Online</h1>
+      <p>
+        Ready to enjoy Latin Table? Place your order today and experience the
+        flavors everyone is talking about.
+      </p>
 
-</section>
-
-<section class="order" id="order">
-
-    <h1 class="section-title">
-        Order Online
-    </h1>
-
-    <p>
-        Ready to enjoy Latin Table?
-        Place your order today and experience
-        the flavors everyone is talking about.
-    </p>
-
-    <a href="#" class="btn">
+      <!-- Order button updated to the provided Cash App link -->
+      <a
+        href="https://cash.app/order/$latintablellc/l/CALL_CAESDUwzNFJaWEZLUFkyMjQ/pickup?a=OWG&rwg_token=AE37R_izKUBBbO6YJUT2FOdRkjM_8B2a4TYu_UO5f-0Ajz7Fb2Us_DHD_eQpOyvj15aAmEHNcpGfSMxmHY23EKZw1-esZeF8qA%3D%3D"
+        class="btn"
+        id="orderPageBtn"
+      >
         Place Your Order
-    </a>
+      </a>
+    </section>
 
-</section>
-<section class="contact" id="contact">
+    <section class="contact" id="contact">
+      <div class="contact-container">
+        <h3>Get In Touch</h3>
+        <div class="contact-item">
+          📧 Email:
+          <a href="mailto:Latintableau@gmail.com">Latintableau@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          📞 Phone: <a href="tel:3345915315">(334) 591-5315</a>
+        </div>
+        <div class="contact-item">
+          📍 Address:<br />2450 Martin Luther King Dr<br />Auburn, AL 36832-4109
+        </div>
+        <div class="map">
+          <iframe
+            src="https://maps.google.com/maps?q=2450%20Martin%20Luther%20King%20Dr%20Auburn%20AL%2036832&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="350"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
 
-<div class="contact-container">
+    <footer>© 2026 Latin Table LLC. All Rights Reserved.</footer>
 
-<h3>Get In Touch</h3>
+    <script>
+      /* NAV dropdown toggle */
+      const hamburger = document.getElementById('hamburger')
+      const dropdown = document.getElementById('navDropdown')
 
-<div class="contact-item">
-📧 Email:
-<a href="mailto:Latintableau@gmail.com">Latintableau@gmail.com</a>
-</div>
+      function toggleDropdown(show) {
+        const shouldShow =
+          typeof show === 'boolean' ? show : dropdown.style.display !== 'flex'
+        dropdown.style.display = shouldShow ? 'flex' : 'none'
+        dropdown.setAttribute('aria-hidden', shouldShow ? 'false' : 'true')
+      }
+      hamburger.addEventListener('click', () => toggleDropdown())
+      hamburger.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          toggleDropdown()
+        }
+      })
 
-<div class="contact-item">
-📞 Phone:
-<a href="tel:3345915315">(334) 591-5315</a>
-</div>
+      /* Close dropdown when clicking outside */
+      document.addEventListener('click', e => {
+        if (!dropdown.contains(e.target) && !hamburger.contains(e.target)) {
+          toggleDropdown(false)
+        }
+      })
 
-<div class="contact-item">
-📍 Address:<br>
-2450 Martin Luther King Dr<br>
-Auburn, AL 36832-4109
-</div>
+      /* Both order buttons already use the provided link in the markup.
+   For extra safety, ensure any existing .btn that should point to order is updated */
+      const orderLink =
+        'https://cash.app/order/$latintablellc/l/CALL_CAESDUwzNFJaWEZLUFkyMjQ/pickup?a=OWG&rwg_token=AE37R_izKUBBbO6YJUT2FOdRkjM_8B2a4TYu_UO5f-0Ajz7Fb2Us_DHD_eQpOyvj15aAmEHNcpGfSMxmHY23EKZw1-esZeF8qA%3D%3D'
+      const heroBtn = document.getElementById('heroOrderBtn')
+      const orderBtn = document.getElementById('orderPageBtn')
+      if (heroBtn) heroBtn.href = orderLink
+      if (orderBtn) orderBtn.href = orderLink
 
-<div class="map">
-
-<iframe
-src="https://maps.google.com/maps?q=2450%20Martin%20Luther%20King%20Dr%20Auburn%20AL%2036832&t=&z=15&ie=UTF8&iwloc=&output=embed"
-width="100%"
-height="350"
-style="border:0;"
-allowfullscreen=""
-loading="lazy">
-</iframe>
-
-</div>
-
-</div>
-
-</section>
-
-<footer>
-© 2026 Latin Table LLC. All Rights Reserved.
-</footer>
-
-</body>
+      /* Improve horizontal gallery scroll with arrows on keyboards */
+      const gallery = document.querySelector('.gallery-grid')
+      if (gallery) {
+        gallery.addEventListener(
+          'wheel',
+          e => {
+            if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
+              // convert vertical wheel to horizontal scroll for a smoother mobile/desktop experience
+              e.preventDefault()
+              gallery.scrollLeft += e.deltaY
+            }
+          },
+          { passive: false }
+        )
+      }
+    </script>
+  </body>
 </html>
